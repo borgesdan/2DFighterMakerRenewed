@@ -13,6 +13,13 @@ namespace Editor
         {
             ImageFileManagerForm form = new ImageFileManagerForm();
             form.ShowDialog();
+
+            var bitmap = form.SelectionRectangle.GetSelectedBitmap();
+
+            if (bitmap != null)
+            {
+                pictureBox1.Image = bitmap;
+            }
         }
     }
 }

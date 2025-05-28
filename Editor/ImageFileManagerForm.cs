@@ -1,16 +1,18 @@
 ﻿using Editor.Core;
+using System.ComponentModel;
 
 namespace Editor
 {
     public partial class ImageFileManagerForm : Form
     {
-        PictureBoxSelectionRectangleHandler selectionRectangle;
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public PictureBoxSelectionRectangleHandler SelectionRectangle { get; set; }
 
         public ImageFileManagerForm()
         {
             InitializeComponent();
 
-            selectionRectangle = new PictureBoxSelectionRectangleHandler(pictureBox1);
+            SelectionRectangle = new PictureBoxSelectionRectangleHandler(pictureBox1);
         }
 
         private void openImageButton_Click(object sender, EventArgs e)

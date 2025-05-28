@@ -1,9 +1,9 @@
 ﻿namespace Editor.Core
 {
     /// <summary>Classe responsável por gerenciar a seleção de retângulos para um PictureBox por meio de eventos.</summary>
-    internal class PictureBoxSelectionRectangleHandler
+    public class PictureBoxSelectionRectangleHandler
     {
-        PictureBox pictureBox;
+        readonly PictureBox pictureBox;
         Point selectionStart;
         Rectangle selectionRect;
         bool isSelecting = false;
@@ -73,7 +73,8 @@
             if(selectionRect.Width == 0 || selectionRect.Height == 0)
                 return null;
 
-            var bmp = new Bitmap(selectionRect.Width, selectionRect.Height);
+            var bmp = SliceBitmap(pictureBox.Image as Bitmap, selectionRect);
+
             return bmp;
         }
 
@@ -101,10 +102,7 @@
 
             try
             {
-                using var slice = new Bitmap(source.Width, source.Height);
-                using var g = Graphics.FromImage(slice);
-
-                g.DrawImage(source, new Rectangle(0, 0, selection.Width, selection.Height), selection, GraphicsUnit.Pixel);
+                using var slice = SliceBitmap(source, selection) ?? throw new NullReferenceException("Não foi possível realizar o recorte da imagem.");
 
                 var magenta = Color.Magenta;
 
@@ -138,6 +136,19 @@
             {
                 throw new InvalidOperationException("Ocorreu um erro ao tentar redimensionar o retângulo. Veja as exceções internas para mais detalhes.", ex);
             }            
+        }
+
+        private static Bitmap? SliceBitmap(Bitmap? source, Rectangle sourceRectangle)
+        {
+            if(source == null) 
+                return null;
+
+            var bmp = new Bitmap(sourceRectangle.Width, sourceRectangle.Height);
+
+            using var g = Graphics.FromImage(bmp);
+            g.DrawImage(source, new Rectangle(0, 0, sourceRectangle.Width, sourceRectangle.Height), sourceRectangle, GraphicsUnit.Pixel);
+
+            return bmp;
         }
     }
 }
