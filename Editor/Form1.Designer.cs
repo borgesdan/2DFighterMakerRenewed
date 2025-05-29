@@ -40,8 +40,9 @@
             CharTabPanel = new TabControl();
             AnimationTabPage = new TabPage();
             tabPage2 = new TabPage();
-            splitContainer2 = new SplitContainer();
             toolStrip1 = new ToolStrip();
+            splitContainer2 = new SplitContainer();
+            toolStrip2 = new ToolStrip();
             OpenImageWindowButton = new ToolStripButton();
             toolStripButton2 = new ToolStripButton();
             toolStripButton3 = new ToolStripButton();
@@ -57,7 +58,7 @@
             ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
             splitContainer2.Panel1.SuspendLayout();
             splitContainer2.SuspendLayout();
-            toolStrip1.SuspendLayout();
+            toolStrip2.SuspendLayout();
             SuspendLayout();
             // 
             // MainToolMenu
@@ -151,6 +152,7 @@
             // AnimationTabPage
             // 
             AnimationTabPage.Controls.Add(splitContainer2);
+            AnimationTabPage.Controls.Add(toolStrip1);
             AnimationTabPage.Location = new Point(4, 24);
             AnimationTabPage.Name = "AnimationTabPage";
             AnimationTabPage.Padding = new Padding(3);
@@ -164,43 +166,50 @@
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(192, 72);
+            tabPage2.Size = new Size(1060, 611);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "tabPage2";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // toolStrip1
+            // 
+            toolStrip1.Location = new Point(3, 3);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new Size(1054, 25);
+            toolStrip1.TabIndex = 0;
+            toolStrip1.Text = "toolStrip1";
+            // 
             // splitContainer2
             // 
             splitContainer2.Dock = DockStyle.Fill;
-            splitContainer2.Location = new Point(3, 3);
+            splitContainer2.Location = new Point(3, 28);
             splitContainer2.Name = "splitContainer2";
             // 
             // splitContainer2.Panel1
             // 
-            splitContainer2.Panel1.Controls.Add(toolStrip1);
-            splitContainer2.Size = new Size(1054, 605);
+            splitContainer2.Panel1.Controls.Add(toolStrip2);
+            splitContainer2.Size = new Size(1054, 580);
             splitContainer2.SplitterDistance = 257;
-            splitContainer2.TabIndex = 0;
+            splitContainer2.TabIndex = 1;
             // 
-            // toolStrip1
+            // toolStrip2
             // 
-            toolStrip1.Dock = DockStyle.Bottom;
-            toolStrip1.Items.AddRange(new ToolStripItem[] { OpenImageWindowButton, toolStripButton2, toolStripButton3, toolStripButton4 });
-            toolStrip1.Location = new Point(0, 580);
-            toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(257, 25);
-            toolStrip1.TabIndex = 0;
-            toolStrip1.Text = "toolStrip1";
+            toolStrip2.Dock = DockStyle.Bottom;
+            toolStrip2.Items.AddRange(new ToolStripItem[] { OpenImageWindowButton, toolStripButton2, toolStripButton3, toolStripButton4 });
+            toolStrip2.Location = new Point(0, 555);
+            toolStrip2.Name = "toolStrip2";
+            toolStrip2.Size = new Size(257, 25);
+            toolStrip2.TabIndex = 0;
+            toolStrip2.Text = "toolStrip2";
             // 
             // OpenImageWindowButton
             // 
-            OpenImageWindowButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            OpenImageWindowButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
             OpenImageWindowButton.Image = (Image)resources.GetObject("OpenImageWindowButton.Image");
             OpenImageWindowButton.ImageTransparentColor = Color.Magenta;
             OpenImageWindowButton.Name = "OpenImageWindowButton";
-            OpenImageWindowButton.Size = new Size(23, 22);
+            OpenImageWindowButton.Size = new Size(37, 22);
             OpenImageWindowButton.Text = "Abrir";
-            OpenImageWindowButton.Click += OpenImageWindowButton_Click;
             // 
             // toolStripButton2
             // 
@@ -247,12 +256,13 @@
             splitContainer1.ResumeLayout(false);
             CharTabPanel.ResumeLayout(false);
             AnimationTabPage.ResumeLayout(false);
+            AnimationTabPage.PerformLayout();
             splitContainer2.Panel1.ResumeLayout(false);
             splitContainer2.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
             splitContainer2.ResumeLayout(false);
-            toolStrip1.ResumeLayout(false);
-            toolStrip1.PerformLayout();
+            toolStrip2.ResumeLayout(false);
+            toolStrip2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -271,10 +281,11 @@
         private TabPage AnimationTabPage;
         private TabPage tabPage2;
         private SplitContainer splitContainer2;
-        private ToolStrip toolStrip1;
+        private ToolStrip toolStrip2;
         private ToolStripButton OpenImageWindowButton;
         private ToolStripButton toolStripButton2;
         private ToolStripButton toolStripButton3;
         private ToolStripButton toolStripButton4;
+        private ToolStrip toolStrip1;
     }
 }
