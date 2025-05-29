@@ -18,6 +18,13 @@
             pictureBox.Paint += Paint;
         }
 
+        public void Reset()
+        {
+            isSelecting = false;
+            repainting = false;
+            pictureBox.Invalidate();
+        }
+
         private void MouseDown(object? sender, MouseEventArgs e)
         {
             isSelecting = true;

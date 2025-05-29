@@ -38,7 +38,10 @@ namespace Editor
             var image = fileManager.OpenImage();
 
             if (image != null)
+            {
+                SelectionRectangle.Reset();
                 pictureBox1.Load(image!);
+            }                
         }
 
         private void ForwardSelectedImageButton_Click(object sender, EventArgs e)
