@@ -47,18 +47,26 @@
             toolStripButton2 = new ToolStripButton();
             toolStripButton3 = new ToolStripButton();
             toolStripButton4 = new ToolStripButton();
+            toolStrip3 = new ToolStrip();
+            AddCharacterButton = new ToolStripButton();
+            toolStripComboBox1 = new ToolStripComboBox();
+            toolStripButton1 = new ToolStripButton();
+            listView1 = new ListView();
             MainToolMenu.SuspendLayout();
             MainTabPanel.SuspendLayout();
             CharTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+            splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
             CharTabPanel.SuspendLayout();
             AnimationTabPage.SuspendLayout();
+            toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
             splitContainer2.Panel1.SuspendLayout();
             splitContainer2.SuspendLayout();
             toolStrip2.SuspendLayout();
+            toolStrip3.SuspendLayout();
             SuspendLayout();
             // 
             // MainToolMenu
@@ -131,6 +139,11 @@
             splitContainer1.Location = new Point(3, 3);
             splitContainer1.Name = "splitContainer1";
             // 
+            // splitContainer1.Panel1
+            // 
+            splitContainer1.Panel1.Controls.Add(listView1);
+            splitContainer1.Panel1.Controls.Add(toolStrip3);
+            // 
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(CharTabPanel);
@@ -173,6 +186,7 @@
             // 
             // toolStrip1
             // 
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripComboBox1, toolStripButton1 });
             toolStrip1.Location = new Point(3, 3);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(1054, 25);
@@ -238,6 +252,47 @@
             toolStripButton4.Size = new Size(23, 22);
             toolStripButton4.Text = "toolStripButton4";
             // 
+            // toolStrip3
+            // 
+            toolStrip3.Items.AddRange(new ToolStripItem[] { AddCharacterButton });
+            toolStrip3.Location = new Point(0, 0);
+            toolStrip3.Name = "toolStrip3";
+            toolStrip3.Size = new Size(194, 25);
+            toolStrip3.TabIndex = 0;
+            toolStrip3.Text = "toolStrip3";
+            // 
+            // AddCharacterButton
+            // 
+            AddCharacterButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            AddCharacterButton.Image = (Image)resources.GetObject("AddCharacterButton.Image");
+            AddCharacterButton.ImageTransparentColor = Color.Magenta;
+            AddCharacterButton.Name = "AddCharacterButton";
+            AddCharacterButton.Size = new Size(33, 22);
+            AddCharacterButton.Text = "Add";
+            // 
+            // toolStripComboBox1
+            // 
+            toolStripComboBox1.Name = "toolStripComboBox1";
+            toolStripComboBox1.Size = new Size(121, 25);
+            // 
+            // toolStripButton1
+            // 
+            toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
+            toolStripButton1.ImageTransparentColor = Color.Magenta;
+            toolStripButton1.Name = "toolStripButton1";
+            toolStripButton1.Size = new Size(23, 22);
+            toolStripButton1.Text = "toolStripButton1";
+            // 
+            // listView1
+            // 
+            listView1.Dock = DockStyle.Fill;
+            listView1.Location = new Point(0, 25);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(194, 614);
+            listView1.TabIndex = 1;
+            listView1.UseCompatibleStateImageBehavior = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -251,18 +306,24 @@
             MainToolMenu.PerformLayout();
             MainTabPanel.ResumeLayout(false);
             CharTabPage.ResumeLayout(false);
+            splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel1.PerformLayout();
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
             CharTabPanel.ResumeLayout(false);
             AnimationTabPage.ResumeLayout(false);
             AnimationTabPage.PerformLayout();
+            toolStrip1.ResumeLayout(false);
+            toolStrip1.PerformLayout();
             splitContainer2.Panel1.ResumeLayout(false);
             splitContainer2.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
             splitContainer2.ResumeLayout(false);
             toolStrip2.ResumeLayout(false);
             toolStrip2.PerformLayout();
+            toolStrip3.ResumeLayout(false);
+            toolStrip3.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -287,5 +348,10 @@
         private ToolStripButton toolStripButton3;
         private ToolStripButton toolStripButton4;
         private ToolStrip toolStrip1;
+        private ToolStrip toolStrip3;
+        private ToolStripButton AddCharacterButton;
+        private ToolStripComboBox toolStripComboBox1;
+        private ToolStripButton toolStripButton1;
+        private ListView listView1;
     }
 }
