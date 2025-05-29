@@ -30,7 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImageFileManagerForm));
             toolMenu = new ToolStrip();
-            openImageButton = new ToolStripButton();
+            ImageFileDialogButton = new ToolStripButton();
+            BackwardSelectedImageButton = new ToolStripButton();
+            ForwardSelectedImageButton = new ToolStripButton();
+            ReplaceSelectedImageButton = new ToolStripButton();
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
             toolMenu.SuspendLayout();
@@ -40,22 +43,52 @@
             // 
             // toolMenu
             // 
-            toolMenu.Items.AddRange(new ToolStripItem[] { openImageButton });
+            toolMenu.Items.AddRange(new ToolStripItem[] { ImageFileDialogButton, BackwardSelectedImageButton, ReplaceSelectedImageButton, ForwardSelectedImageButton });
             toolMenu.Location = new Point(0, 0);
             toolMenu.Name = "toolMenu";
             toolMenu.Size = new Size(800, 25);
             toolMenu.TabIndex = 0;
             toolMenu.Text = "toolStrip1";
             // 
-            // openImageButton
+            // ImageFileDialogButton
             // 
-            openImageButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            openImageButton.Image = (Image)resources.GetObject("openImageButton.Image");
-            openImageButton.ImageTransparentColor = Color.Magenta;
-            openImageButton.Name = "openImageButton";
-            openImageButton.Size = new Size(23, 22);
-            openImageButton.Text = "toolStripButton1";
-            openImageButton.Click += openImageButton_Click;
+            ImageFileDialogButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            ImageFileDialogButton.Image = (Image)resources.GetObject("ImageFileDialogButton.Image");
+            ImageFileDialogButton.ImageTransparentColor = Color.Magenta;
+            ImageFileDialogButton.Name = "ImageFileDialogButton";
+            ImageFileDialogButton.Size = new Size(23, 22);
+            ImageFileDialogButton.Text = "toolStripButton1";
+            ImageFileDialogButton.Click += ImageFileDialogButton_Click;
+            // 
+            // BackwardSelectedImageButton
+            // 
+            BackwardSelectedImageButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            BackwardSelectedImageButton.Image = (Image)resources.GetObject("BackwardSelectedImageButton.Image");
+            BackwardSelectedImageButton.ImageTransparentColor = Color.Magenta;
+            BackwardSelectedImageButton.Name = "BackwardSelectedImageButton";
+            BackwardSelectedImageButton.Size = new Size(23, 22);
+            BackwardSelectedImageButton.Text = "toolStripButton1";
+            BackwardSelectedImageButton.Click += BackwardSelectedImageButton_Click;
+            // 
+            // ForwardSelectedImageButton
+            // 
+            ForwardSelectedImageButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            ForwardSelectedImageButton.Image = (Image)resources.GetObject("ForwardSelectedImageButton.Image");
+            ForwardSelectedImageButton.ImageTransparentColor = Color.Magenta;
+            ForwardSelectedImageButton.Name = "ForwardSelectedImageButton";
+            ForwardSelectedImageButton.Size = new Size(23, 22);
+            ForwardSelectedImageButton.Text = "toolStripButton1";
+            ForwardSelectedImageButton.Click += ForwardSelectedImageButton_Click;
+            // 
+            // ReplaceSelectedImageButton
+            // 
+            ReplaceSelectedImageButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            ReplaceSelectedImageButton.Image = (Image)resources.GetObject("ReplaceSelectedImageButton.Image");
+            ReplaceSelectedImageButton.ImageTransparentColor = Color.Magenta;
+            ReplaceSelectedImageButton.Name = "ReplaceSelectedImageButton";
+            ReplaceSelectedImageButton.Size = new Size(23, 22);
+            ReplaceSelectedImageButton.Text = "toolStripButton1";
+            ReplaceSelectedImageButton.Click += ReplaceSelectedImageButton_Click;
             // 
             // panel1
             // 
@@ -97,8 +130,11 @@
         #endregion
 
         private ToolStrip toolMenu;
-        private ToolStripButton openImageButton;
+        private ToolStripButton ImageFileDialogButton;
         private Panel panel1;
         private PictureBox pictureBox1;
+        private ToolStripButton ForwardSelectedImageButton;
+        private ToolStripButton ReplaceSelectedImageButton;
+        private ToolStripButton BackwardSelectedImageButton;
     }
 }
