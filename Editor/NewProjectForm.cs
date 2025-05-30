@@ -1,9 +1,13 @@
 ﻿using Editor.Core;
+using System.ComponentModel;
 
 namespace Editor
 {
     public partial class NewProjectForm : Form
     {
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public ProjectModel? Model { get; set; }
+
         public NewProjectForm()
         {
             InitializeComponent();
@@ -65,7 +69,15 @@ namespace Editor
             try
             {
                 File.Create(path);
+                
+                Model = new ProjectModel
+                {
+                    FileName = path,
+                    Name = projectName,
+                };
+
                 DialogResult = DialogResult.OK;
+
                 Close();
             }
             catch (Exception ex)
