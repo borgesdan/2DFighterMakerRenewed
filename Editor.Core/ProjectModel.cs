@@ -5,6 +5,8 @@
     /// </summary>
     public class ProjectModel
     {
+        public static readonly string FileExtension = ".fmbr";
+
         /// <summary>
         /// O caminho do arquivo carregado.
         /// </summary>

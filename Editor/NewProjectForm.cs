@@ -59,7 +59,8 @@ namespace Editor
                 return;
             }
 
-            string path = Path.Combine(directory, projectName, projectName + ".fmbr");
+            string finalDirectory = Path.Combine(directory, projectName);
+            string path = Path.Combine(finalDirectory, projectName + ProjectModel.FileExtension);
 
             if (File.Exists(path))
             {
@@ -68,6 +69,11 @@ namespace Editor
 
             try
             {
+                if (!Directory.Exists(finalDirectory))
+                {
+                    Directory.CreateDirectory(finalDirectory);
+                }
+
                 File.Create(path);
                 
                 Model = new ProjectModel
