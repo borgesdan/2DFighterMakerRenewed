@@ -9,13 +9,11 @@ namespace Editor
     {
         public NewProjectForm()
         {
-            InitializeComponent();
+            InitializeComponent();            
             
-            string svgFilePath = "C:\\Users\\Borges\\Downloads\\fontawesome-free-6.7.2-desktop\\svgs\\solid\\magnifying-glass.svg";             
-            var svgDoc = SvgDocument.Open(svgFilePath);
+            var svgDoc = SvgManager.NewDocument("solid\\magnifying-glass.svg");
 
-
-            button1.Image = svgDoc.Draw(12,12);
+            button1.Image = svgDoc.Draw(SvgManager.EditorDefaultWidth, SvgManager.EditorDefaultHeight);
         }
     }
 }
