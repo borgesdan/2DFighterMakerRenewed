@@ -1,40 +1,21 @@
 ﻿using Editor.Core;
+using Svg;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace Editor
 {
     public partial class NewProjectForm : Form
     {
-        public event EventHandler<CreateProjectEventArgs>? CreateButtonClick;
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public ProjectModel? ProjectModel { get; private set; }
-
         public NewProjectForm()
         {
             InitializeComponent();
+            
+            string svgFilePath = "C:\\Users\\Borges\\Downloads\\fontawesome-free-6.7.2-desktop\\svgs\\solid\\magnifying-glass.svg";             
+            var svgDoc = SvgDocument.Open(svgFilePath);
+
+
+            button1.Image = svgDoc.Draw(12,12);
         }
-
-        private void CreateProjectButton_Click(object sender, EventArgs e)
-        {
-            ProjectModel = new ProjectModel()
-            {
-                Name = NameTextBox.Text
-            };
-
-            var args = new CreateProjectEventArgs
-            {
-                ProjectModel = this.ProjectModel,
-            };
-
-            CreateButtonClick?.Invoke(sender, args);
-
-            DialogResult = DialogResult.OK;
-        }
-    }    
-
-    public class CreateProjectEventArgs : EventArgs
-    {
-        public ProjectModel? ProjectModel { get; set; }        
     }
 }

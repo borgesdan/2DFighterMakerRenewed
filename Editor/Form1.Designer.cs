@@ -107,13 +107,11 @@
             MainTabPanel.Controls.Add(ConfigTabPage);
             MainTabPanel.Controls.Add(CharTabPage);
             MainTabPanel.Dock = DockStyle.Fill;
-            MainTabPanel.Enabled = false;
             MainTabPanel.Location = new Point(0, 25);
             MainTabPanel.Name = "MainTabPanel";
             MainTabPanel.SelectedIndex = 0;
             MainTabPanel.Size = new Size(1280, 673);
             MainTabPanel.TabIndex = 1;
-            MainTabPanel.Visible = false;
             // 
             // ConfigTabPage
             // 
@@ -180,6 +178,7 @@
             AddCharacterButton.Name = "AddCharacterButton";
             AddCharacterButton.Size = new Size(33, 22);
             AddCharacterButton.Text = "Add";
+            AddCharacterButton.Click += AddCharacterButton_Click;
             // 
             // CharTabPanel
             // 

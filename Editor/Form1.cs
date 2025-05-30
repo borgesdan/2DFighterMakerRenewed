@@ -1,38 +1,43 @@
 using Editor.Core;
 using System.ComponentModel;
+using System.Drawing.Text;
+using System.Reflection;
 
 namespace Editor
 {
     public partial class Form1 : Form
     {
+        
+
         ProjectModel? projectModel;
 
         ImageFileManagerForm? imageFileManagerForm;
         bool imageFileManagerFormIsVisible;
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public ProjectModel? Project 
-        { 
-            get => projectModel; 
-            set 
-            { 
-                projectModel = value; 
-                
-                if(projectModel == null)
+        public ProjectModel? Project
+        {
+            get => projectModel;
+            set
+            {
+                projectModel = value;
+
+                if (projectModel == null)
                 {
                     ResetFormContent();
                 }
                 else
                 {
                     EnableFormContent();
-                }                
+                }
             }
         }
 
         public Form1()
         {
             InitializeComponent();
-        }
+            ResetFormContent();            
+        }        
 
         private void ResetFormContent()
         {
@@ -75,12 +80,12 @@ namespace Editor
             var form = new NewProjectForm();
             form.StartPosition = FormStartPosition.CenterParent;
 
-            var dialog = form.ShowDialog(this);
+            var dialog = form.ShowDialog(this);            
+        }
 
-            if (dialog == DialogResult.OK)
-            {
-                this.Project = form.ProjectModel;
-            }            
+        private void AddCharacterButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

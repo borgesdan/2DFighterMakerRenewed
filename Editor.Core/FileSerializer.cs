@@ -2,7 +2,7 @@
 
 namespace Editor.Core
 {
-    public class FileSerializer
+    public static class FileSerializer
     {
         public static string Serializer<T>(T model)
         {
