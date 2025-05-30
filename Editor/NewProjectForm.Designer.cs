@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
+            NameTextBox = new TextBox();
             CreateProjectButton = new Button();
             SuspendLayout();
             // 
-            // textBox1
+            // NameTextBox
             // 
-            textBox1.Dock = DockStyle.Top;
-            textBox1.Location = new Point(0, 0);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(434, 23);
-            textBox1.TabIndex = 0;
+            NameTextBox.Dock = DockStyle.Top;
+            NameTextBox.Location = new Point(0, 0);
+            NameTextBox.Name = "NameTextBox";
+            NameTextBox.Size = new Size(434, 23);
+            NameTextBox.TabIndex = 0;
             // 
             // CreateProjectButton
             // 
@@ -49,6 +49,7 @@
             CreateProjectButton.TabIndex = 1;
             CreateProjectButton.Text = "Criar";
             CreateProjectButton.UseVisualStyleBackColor = true;
+            CreateProjectButton.Click += CreateProjectButton_Click;
             // 
             // NewProjectForm
             // 
@@ -56,7 +57,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(434, 64);
             Controls.Add(CreateProjectButton);
-            Controls.Add(textBox1);
+            Controls.Add(NameTextBox);
             Name = "NewProjectForm";
             Text = "NewProjectForm";
             ResumeLayout(false);
@@ -65,7 +66,7 @@
 
         #endregion
 
-        private TextBox textBox1;
+        private TextBox NameTextBox;
         private Button CreateProjectButton;
     }
 }

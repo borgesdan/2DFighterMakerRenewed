@@ -32,26 +32,26 @@
             MainToolMenu = new ToolStrip();
             toolStripSplitButton1 = new ToolStripSplitButton();
             novoToolStripMenuItem = new ToolStripMenuItem();
-            projetoToolStripMenuItem = new ToolStripMenuItem();
+            NewProjectMenuItem = new ToolStripMenuItem();
             MainTabPanel = new TabControl();
             ConfigTabPage = new TabPage();
             CharTabPage = new TabPage();
             splitContainer1 = new SplitContainer();
+            listView1 = new ListView();
+            toolStrip3 = new ToolStrip();
+            AddCharacterButton = new ToolStripButton();
             CharTabPanel = new TabControl();
             AnimationTabPage = new TabPage();
-            tabPage2 = new TabPage();
-            toolStrip1 = new ToolStrip();
             splitContainer2 = new SplitContainer();
             toolStrip2 = new ToolStrip();
             OpenImageWindowButton = new ToolStripButton();
             toolStripButton2 = new ToolStripButton();
             toolStripButton3 = new ToolStripButton();
             toolStripButton4 = new ToolStripButton();
-            toolStrip3 = new ToolStrip();
-            AddCharacterButton = new ToolStripButton();
+            toolStrip1 = new ToolStrip();
             toolStripComboBox1 = new ToolStripComboBox();
             toolStripButton1 = new ToolStripButton();
-            listView1 = new ListView();
+            tabPage2 = new TabPage();
             MainToolMenu.SuspendLayout();
             MainTabPanel.SuspendLayout();
             CharTabPage.SuspendLayout();
@@ -59,14 +59,14 @@
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
+            toolStrip3.SuspendLayout();
             CharTabPanel.SuspendLayout();
             AnimationTabPage.SuspendLayout();
-            toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
             splitContainer2.Panel1.SuspendLayout();
             splitContainer2.SuspendLayout();
             toolStrip2.SuspendLayout();
-            toolStrip3.SuspendLayout();
+            toolStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // MainToolMenu
@@ -90,27 +90,30 @@
             // 
             // novoToolStripMenuItem
             // 
-            novoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { projetoToolStripMenuItem });
+            novoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { NewProjectMenuItem });
             novoToolStripMenuItem.Name = "novoToolStripMenuItem";
             novoToolStripMenuItem.Size = new Size(103, 22);
             novoToolStripMenuItem.Text = "Novo";
             // 
-            // projetoToolStripMenuItem
+            // NewProjectMenuItem
             // 
-            projetoToolStripMenuItem.Name = "projetoToolStripMenuItem";
-            projetoToolStripMenuItem.Size = new Size(112, 22);
-            projetoToolStripMenuItem.Text = "Projeto";
+            NewProjectMenuItem.Name = "NewProjectMenuItem";
+            NewProjectMenuItem.Size = new Size(112, 22);
+            NewProjectMenuItem.Text = "Projeto";
+            NewProjectMenuItem.Click += NewProjectMenuItem_Click;
             // 
             // MainTabPanel
             // 
             MainTabPanel.Controls.Add(ConfigTabPage);
             MainTabPanel.Controls.Add(CharTabPage);
             MainTabPanel.Dock = DockStyle.Fill;
+            MainTabPanel.Enabled = false;
             MainTabPanel.Location = new Point(0, 25);
             MainTabPanel.Name = "MainTabPanel";
             MainTabPanel.SelectedIndex = 0;
             MainTabPanel.Size = new Size(1280, 673);
             MainTabPanel.TabIndex = 1;
+            MainTabPanel.Visible = false;
             // 
             // ConfigTabPage
             // 
@@ -151,6 +154,33 @@
             splitContainer1.SplitterDistance = 194;
             splitContainer1.TabIndex = 0;
             // 
+            // listView1
+            // 
+            listView1.Dock = DockStyle.Fill;
+            listView1.Location = new Point(0, 25);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(194, 614);
+            listView1.TabIndex = 1;
+            listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // toolStrip3
+            // 
+            toolStrip3.Items.AddRange(new ToolStripItem[] { AddCharacterButton });
+            toolStrip3.Location = new Point(0, 0);
+            toolStrip3.Name = "toolStrip3";
+            toolStrip3.Size = new Size(194, 25);
+            toolStrip3.TabIndex = 0;
+            toolStrip3.Text = "toolStrip3";
+            // 
+            // AddCharacterButton
+            // 
+            AddCharacterButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            AddCharacterButton.Image = (Image)resources.GetObject("AddCharacterButton.Image");
+            AddCharacterButton.ImageTransparentColor = Color.Magenta;
+            AddCharacterButton.Name = "AddCharacterButton";
+            AddCharacterButton.Size = new Size(33, 22);
+            AddCharacterButton.Text = "Add";
+            // 
             // CharTabPanel
             // 
             CharTabPanel.Controls.Add(AnimationTabPage);
@@ -173,25 +203,6 @@
             AnimationTabPage.TabIndex = 0;
             AnimationTabPage.Text = "Animações";
             AnimationTabPage.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            tabPage2.Location = new Point(4, 24);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1060, 611);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "tabPage2";
-            tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // toolStrip1
-            // 
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripComboBox1, toolStripButton1 });
-            toolStrip1.Location = new Point(3, 3);
-            toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(1054, 25);
-            toolStrip1.TabIndex = 0;
-            toolStrip1.Text = "toolStrip1";
             // 
             // splitContainer2
             // 
@@ -252,23 +263,14 @@
             toolStripButton4.Size = new Size(23, 22);
             toolStripButton4.Text = "toolStripButton4";
             // 
-            // toolStrip3
+            // toolStrip1
             // 
-            toolStrip3.Items.AddRange(new ToolStripItem[] { AddCharacterButton });
-            toolStrip3.Location = new Point(0, 0);
-            toolStrip3.Name = "toolStrip3";
-            toolStrip3.Size = new Size(194, 25);
-            toolStrip3.TabIndex = 0;
-            toolStrip3.Text = "toolStrip3";
-            // 
-            // AddCharacterButton
-            // 
-            AddCharacterButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            AddCharacterButton.Image = (Image)resources.GetObject("AddCharacterButton.Image");
-            AddCharacterButton.ImageTransparentColor = Color.Magenta;
-            AddCharacterButton.Name = "AddCharacterButton";
-            AddCharacterButton.Size = new Size(33, 22);
-            AddCharacterButton.Text = "Add";
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripComboBox1, toolStripButton1 });
+            toolStrip1.Location = new Point(3, 3);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new Size(1054, 25);
+            toolStrip1.TabIndex = 0;
+            toolStrip1.Text = "toolStrip1";
             // 
             // toolStripComboBox1
             // 
@@ -284,14 +286,15 @@
             toolStripButton1.Size = new Size(23, 22);
             toolStripButton1.Text = "toolStripButton1";
             // 
-            // listView1
+            // tabPage2
             // 
-            listView1.Dock = DockStyle.Fill;
-            listView1.Location = new Point(0, 25);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(194, 614);
-            listView1.TabIndex = 1;
-            listView1.UseCompatibleStateImageBehavior = false;
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(1060, 611);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "tabPage2";
+            tabPage2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -311,19 +314,19 @@
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
+            toolStrip3.ResumeLayout(false);
+            toolStrip3.PerformLayout();
             CharTabPanel.ResumeLayout(false);
             AnimationTabPage.ResumeLayout(false);
             AnimationTabPage.PerformLayout();
-            toolStrip1.ResumeLayout(false);
-            toolStrip1.PerformLayout();
             splitContainer2.Panel1.ResumeLayout(false);
             splitContainer2.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
             splitContainer2.ResumeLayout(false);
             toolStrip2.ResumeLayout(false);
             toolStrip2.PerformLayout();
-            toolStrip3.ResumeLayout(false);
-            toolStrip3.PerformLayout();
+            toolStrip1.ResumeLayout(false);
+            toolStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -333,7 +336,7 @@
         private ToolStrip MainToolMenu;
         private ToolStripSplitButton toolStripSplitButton1;
         private ToolStripMenuItem novoToolStripMenuItem;
-        private ToolStripMenuItem projetoToolStripMenuItem;
+        private ToolStripMenuItem NewProjectMenuItem;
         private TabControl MainTabPanel;
         private TabPage ConfigTabPage;
         private TabPage CharTabPage;

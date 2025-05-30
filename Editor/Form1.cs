@@ -1,18 +1,54 @@
+using Editor.Core;
+using System.ComponentModel;
+
 namespace Editor
 {
     public partial class Form1 : Form
     {
-        ImageFileManagerForm imageFileManagerForm;
+        ProjectModel? projectModel;
+
+        ImageFileManagerForm? imageFileManagerForm;
         bool imageFileManagerFormIsVisible;
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public ProjectModel? Project 
+        { 
+            get => projectModel; 
+            set 
+            { 
+                projectModel = value; 
+                
+                if(projectModel == null)
+                {
+                    ResetFormContent();
+                }
+                else
+                {
+                    EnableFormContent();
+                }                
+            }
+        }
 
         public Form1()
         {
             InitializeComponent();
         }
 
+        private void ResetFormContent()
+        {
+            MainTabPanel.Enabled = false;
+            MainTabPanel.Visible = false;
+        }
+
+        private void EnableFormContent()
+        {
+            MainTabPanel.Enabled = true;
+            MainTabPanel.Visible = true;
+        }
+
         private void OpenImageWindowButton_Click(object sender, EventArgs e)
         {
-            if (imageFileManagerForm == null || imageFileManagerForm.IsDisposed) 
+            if (imageFileManagerForm == null || imageFileManagerForm.IsDisposed)
             {
                 imageFileManagerForm = CreateImageFileManagerForm();
             }
@@ -32,6 +68,19 @@ namespace Editor
             var form = new ImageFileManagerForm();
             form.FormClosed += (object? sender, FormClosedEventArgs e) => { imageFileManagerFormIsVisible = false; };
             return form;
+        }
+
+        private void NewProjectMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new NewProjectForm();
+            form.StartPosition = FormStartPosition.CenterParent;
+
+            var dialog = form.ShowDialog(this);
+
+            if (dialog == DialogResult.OK)
+            {
+                this.Project = form.ProjectModel;
+            }            
         }
     }
 }
