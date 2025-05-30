@@ -40,6 +40,8 @@
             SearchRecentsButton = new Button();
             NewProjectButton = new Button();
             NewProjectPage = new TabPage();
+            panel2 = new Panel();
+            NewProjectBackButton = new Button();
             tableLayoutPanel3 = new TableLayoutPanel();
             label4 = new Label();
             label5 = new Label();
@@ -60,6 +62,7 @@
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             NewProjectPage.SuspendLayout();
+            panel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             ConfigPage.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
@@ -201,9 +204,11 @@
             NewProjectButton.TextAlign = ContentAlignment.MiddleLeft;
             NewProjectButton.TextImageRelation = TextImageRelation.ImageBeforeText;
             NewProjectButton.UseVisualStyleBackColor = true;
+            NewProjectButton.Click += NewProjectButton_Click;
             // 
             // NewProjectPage
             // 
+            NewProjectPage.Controls.Add(panel2);
             NewProjectPage.Controls.Add(tableLayoutPanel3);
             NewProjectPage.Location = new Point(4, 24);
             NewProjectPage.Name = "NewProjectPage";
@@ -212,6 +217,26 @@
             NewProjectPage.TabIndex = 1;
             NewProjectPage.Text = "Projeto";
             NewProjectPage.UseVisualStyleBackColor = true;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(NewProjectBackButton);
+            panel2.Dock = DockStyle.Bottom;
+            panel2.Location = new Point(3, 584);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(746, 60);
+            panel2.TabIndex = 1;
+            // 
+            // NewProjectBackButton
+            // 
+            NewProjectBackButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            NewProjectBackButton.Location = new Point(5, 32);
+            NewProjectBackButton.Name = "NewProjectBackButton";
+            NewProjectBackButton.Size = new Size(100, 23);
+            NewProjectBackButton.TabIndex = 1;
+            NewProjectBackButton.Text = "Voltar";
+            NewProjectBackButton.UseVisualStyleBackColor = true;
+            NewProjectBackButton.Click += NewProjectBackButton_Click;
             // 
             // tableLayoutPanel3
             // 
@@ -270,6 +295,7 @@
             EmptyProjectButton.TextAlign = ContentAlignment.MiddleLeft;
             EmptyProjectButton.TextImageRelation = TextImageRelation.ImageBeforeText;
             EmptyProjectButton.UseVisualStyleBackColor = true;
+            EmptyProjectButton.Click += EmptyProjectButton_Click;
             // 
             // ConfigPage
             // 
@@ -416,6 +442,7 @@
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
             NewProjectPage.ResumeLayout(false);
+            panel2.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel3.PerformLayout();
             ConfigPage.ResumeLayout(false);
@@ -453,5 +480,7 @@
         private ComboBox DirectoryListBox;
         private Button OpenDirectoryDialogButton;
         private Button FinishButton;
+        private Panel panel2;
+        private Button NewProjectBackButton;
     }
 }

@@ -1,7 +1,4 @@
 ﻿using Editor.Core;
-using Svg;
-using System.ComponentModel;
-using System.Windows.Forms;
 
 namespace Editor
 {
@@ -16,10 +13,18 @@ namespace Editor
             EmptyProjectButton.Image = SvgManager.NewBitmap("solid\\file", 32, 32);
             OpenDirectoryDialogButton.Image = SvgManager.NewBitmap("solid\\folder-open", 12, 12);
 
-            FinishButton.Enabled = false;
-
             ProjectNameTextBox.LostFocus += FinishButtonEnabledEvent;
             DirectoryListBox.SelectedIndexChanged += FinishButtonEnabledEvent;
+
+            SetDefaultState();
+        }
+
+        private void SetDefaultState()
+        {
+            FinishButton.Enabled = false;
+
+            MainTabPanel.TabPages.Clear();
+            MainTabPanel.TabPages.Add(GetStartedPage);
         }
 
         private void FinishButtonEnabledEvent(object? sender, EventArgs e)
@@ -48,9 +53,9 @@ namespace Editor
             {
                 MessageBox.Show("Erro ao processar o formulário.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            }            
+            }
 
-            string path = Path.Combine(directory, projectName + ".fmbr");
+            string path = Path.Combine(directory, projectName, projectName + ".fmbr");
 
             if (File.Exists(path))
             {
@@ -63,11 +68,29 @@ namespace Editor
                 DialogResult = DialogResult.OK;
                 Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                var message = String.Format("Não foi possível criar o arquivo de projeto. Exceção: {}", ex.Message);
+                var message = string.Format("Não foi possível criar o arquivo de projeto. Exceção: {0}", ex.Message);
                 MessageBox.Show(message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void NewProjectButton_Click(object sender, EventArgs e)
+        {
+            MainTabPanel.TabPages.Clear();
+            MainTabPanel.TabPages.Add(NewProjectPage);
+        }
+
+        private void NewProjectBackButton_Click(object sender, EventArgs e)
+        {
+            MainTabPanel.TabPages.Clear();
+            MainTabPanel.TabPages.Add(GetStartedPage);
+        }
+
+        private void EmptyProjectButton_Click(object sender, EventArgs e)
+        {
+            MainTabPanel.TabPages.Clear();
+            MainTabPanel.TabPages.Add(ConfigPage);
         }
     }
 }
