@@ -70,24 +70,14 @@ namespace Editor
             }
 
             try
-            {
-                if (!Directory.Exists(finalDirectory))
-                {
-                    Directory.CreateDirectory(finalDirectory);
-                }
-
-                var stream = File.Create(path);
-                stream.Close();
-                
+            {   
                 Model = new ProjectModel
                 {
                     FileName = path,
                     Name = projectName,
-                };                
+                };
 
-                var data = FileSerializer.Serializer(Model);
-                
-                File.WriteAllText(path, data);
+                Pipeline.Write(path, Model);
 
                 DialogResult = DialogResult.OK;
 

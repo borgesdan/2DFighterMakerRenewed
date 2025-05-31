@@ -32,7 +32,7 @@
             };
         }        
 
-        /// <summary>Abre uma janela para selecionar um arquivo de imagem e o retorna com um Stream.</summary>
+        /// <summary>Abre uma janela para selecionar um arquivo de imagem.</summary>
         public string? OpenImage()
         {
             openFileDialog.Filter = ImageExtensions;

@@ -94,9 +94,8 @@ namespace Editor
             var file = fileManager.OpenProject();
 
             if (file != null) 
-            {
-                var data = File.ReadAllText(file);
-                projectModel = FileSerializer.Deserializer<ProjectModel>(data);
+            {                
+                projectModel = Pipeline.Read<ProjectModel>(file);
             }
         }
     }
