@@ -1,5 +1,6 @@
 ﻿using Editor.Core;
 using System.ComponentModel;
+using System.Text.Json;
 
 namespace Editor
 {
@@ -65,6 +66,7 @@ namespace Editor
             if (File.Exists(path))
             {
                 MessageBox.Show("Já existe um projeto de mesmo nome no caminho específicado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             try
@@ -74,13 +76,18 @@ namespace Editor
                     Directory.CreateDirectory(finalDirectory);
                 }
 
-                File.Create(path);
+                var stream = File.Create(path);
+                stream.Close();
                 
                 Model = new ProjectModel
                 {
                     FileName = path,
                     Name = projectName,
-                };
+                };                
+
+                var data = FileSerializer.Serializer(Model);
+                
+                File.WriteAllText(path, data);
 
                 DialogResult = DialogResult.OK;
 

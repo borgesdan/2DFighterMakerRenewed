@@ -34,7 +34,7 @@ namespace Editor
 
         private void ImageFileDialogButton_Click(object sender, EventArgs e)
         {
-            using FileManager fileManager = new FileManager();
+            using OpenFileManager fileManager = new OpenFileManager();
             var image = fileManager.OpenImage();
 
             if (image != null)

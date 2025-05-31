@@ -3,7 +3,7 @@
     /// <summary>
     /// Classe para gerenciamento de arquivos.
     /// </summary>
-    internal class FileManager : IDisposable
+    internal class OpenFileManager : IDisposable
     {
         static readonly string ImageExtensions =
             "Arquivos de Imagem|*.jpg;*.jpeg;*.png;*.bmp;*.gif;*.tif;*.tiff|" +
@@ -14,10 +14,15 @@
             "TIFF (*.tif;*.tiff)|*.tif;*.tiff|" +
             "Todos os Arquivos|*.*";
 
+        static readonly string ProjectExtensions =
+            string.Format("Arquivos de Projeto|*{0}|", ProjectModel.FileExtension) +
+            string.Format("FMBR (*{0})|*{1}|", ProjectModel.FileExtension, ProjectModel.FileExtension) +
+            "Todos os Arquivos|*.*";
+
         readonly OpenFileDialog openFileDialog;
         bool disposed = false;
 
-        public FileManager()
+        public OpenFileManager()
         {
             openFileDialog = new OpenFileDialog
             {
@@ -32,6 +37,19 @@
         {
             openFileDialog.Filter = ImageExtensions;
             openFileDialog.Title = "Selecione uma imagem";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                return openFileDialog.FileName;
+            }
+
+            return null;
+        }
+
+        public string? OpenProject()
+        {
+            openFileDialog.Filter = ProjectExtensions;
+            openFileDialog.Title = "Selecione um arquivo de projeto.";
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {

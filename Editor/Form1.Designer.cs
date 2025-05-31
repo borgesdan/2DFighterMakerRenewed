@@ -33,6 +33,8 @@
             toolStripSplitButton1 = new ToolStripSplitButton();
             novoToolStripMenuItem = new ToolStripMenuItem();
             NewProjectMenuItem = new ToolStripMenuItem();
+            abrirToolStripMenuItem = new ToolStripMenuItem();
+            OpenProjectMenuItem = new ToolStripMenuItem();
             MainTabPanel = new TabControl();
             ConfigTabPage = new TabPage();
             CharTabPage = new TabPage();
@@ -81,7 +83,7 @@
             // toolStripSplitButton1
             // 
             toolStripSplitButton1.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            toolStripSplitButton1.DropDownItems.AddRange(new ToolStripItem[] { novoToolStripMenuItem });
+            toolStripSplitButton1.DropDownItems.AddRange(new ToolStripItem[] { novoToolStripMenuItem, abrirToolStripMenuItem });
             toolStripSplitButton1.Image = (Image)resources.GetObject("toolStripSplitButton1.Image");
             toolStripSplitButton1.ImageTransparentColor = Color.Magenta;
             toolStripSplitButton1.Name = "toolStripSplitButton1";
@@ -92,15 +94,29 @@
             // 
             novoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { NewProjectMenuItem });
             novoToolStripMenuItem.Name = "novoToolStripMenuItem";
-            novoToolStripMenuItem.Size = new Size(103, 22);
+            novoToolStripMenuItem.Size = new Size(180, 22);
             novoToolStripMenuItem.Text = "Novo";
             // 
             // NewProjectMenuItem
             // 
             NewProjectMenuItem.Name = "NewProjectMenuItem";
-            NewProjectMenuItem.Size = new Size(112, 22);
+            NewProjectMenuItem.Size = new Size(180, 22);
             NewProjectMenuItem.Text = "Projeto";
             NewProjectMenuItem.Click += NewProjectMenuItem_Click;
+            // 
+            // abrirToolStripMenuItem
+            // 
+            abrirToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { OpenProjectMenuItem });
+            abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
+            abrirToolStripMenuItem.Size = new Size(180, 22);
+            abrirToolStripMenuItem.Text = "Abrir";
+            // 
+            // OpenProjectMenuItem
+            // 
+            OpenProjectMenuItem.Name = "OpenProjectMenuItem";
+            OpenProjectMenuItem.Size = new Size(180, 22);
+            OpenProjectMenuItem.Text = "Projeto";
+            OpenProjectMenuItem.Click += OpenProjectMenuItem_Click;
             // 
             // MainTabPanel
             // 
@@ -355,5 +371,7 @@
         private ToolStripComboBox toolStripComboBox1;
         private ToolStripButton toolStripButton1;
         private ListView listView1;
+        private ToolStripMenuItem abrirToolStripMenuItem;
+        private ToolStripMenuItem OpenProjectMenuItem;
     }
 }

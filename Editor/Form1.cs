@@ -7,7 +7,7 @@ namespace Editor
 {
     public partial class Form1 : Form
     {
-        
+
 
         ProjectModel? projectModel;
 
@@ -36,8 +36,8 @@ namespace Editor
         public Form1()
         {
             InitializeComponent();
-            ResetFormContent();            
-        }        
+            ResetFormContent();
+        }
 
         private void ResetFormContent()
         {
@@ -80,12 +80,24 @@ namespace Editor
             var form = new NewProjectForm();
             form.StartPosition = FormStartPosition.CenterParent;
 
-            var dialog = form.ShowDialog(this);            
+            var dialog = form.ShowDialog(this);
         }
 
         private void AddCharacterButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void OpenProjectMenuItem_Click(object sender, EventArgs e)
+        {
+            var fileManager = new OpenFileManager();
+            var file = fileManager.OpenProject();
+
+            if (file != null) 
+            {
+                var data = File.ReadAllText(file);
+                projectModel = FileSerializer.Deserializer<ProjectModel>(data);
+            }
         }
     }
 }
