@@ -7,8 +7,6 @@ namespace Editor
 {
     public partial class Form1 : Form
     {
-
-
         ProjectModel? projectModel;
 
         ImageFileManagerForm? imageFileManagerForm;
@@ -95,7 +93,7 @@ namespace Editor
 
             if (file != null) 
             {                
-                projectModel = Pipeline.Read<ProjectModel>(file);
+                this.Project = Pipeline.Read<ProjectModel>(file);
             }
         }
     }
