@@ -13,10 +13,10 @@ namespace Editor
         {
             InitializeComponent();
 
-            SearchRecentsButton.Image = SvgManager.NewBitmap("solid\\magnifying-glass");
-            NewProjectButton.Image = SvgManager.NewBitmap("solid\\file-signature", 32, 32);
-            EmptyProjectButton.Image = SvgManager.NewBitmap("solid\\file", 32, 32);
-            OpenDirectoryDialogButton.Image = SvgManager.NewBitmap("solid\\folder-open", 12, 12);
+            SearchRecentsButton.Image = SvgManager.LoadBitmap("solid\\magnifying-glass");
+            NewProjectButton.Image = SvgManager.LoadBitmap("solid\\file-signature", 32, 32);
+            EmptyProjectButton.Image = SvgManager.LoadBitmap("solid\\file", 32, 32);
+            OpenDirectoryDialogButton.Image = SvgManager.LoadBitmap("solid\\folder-open", 12, 12);
 
             ProjectNameTextBox.LostFocus += FinishButtonEnabledEvent;
             DirectoryListBox.SelectedIndexChanged += FinishButtonEnabledEvent;

@@ -1,7 +1,7 @@
 ﻿namespace Editor.Core
 {
     /// <summary>
-    /// Classe para gerenciamento de arquivos.
+    /// Classe para gerenciamento de abertura arquivos.
     /// </summary>
     internal class OpenFileManager : IDisposable
     {

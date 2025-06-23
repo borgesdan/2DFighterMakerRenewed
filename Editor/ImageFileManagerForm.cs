@@ -30,6 +30,17 @@ namespace Editor
             InitializeComponent();
 
             SelectionRectangle = new PictureBoxSelectionRectangleHandler(pictureBox1);
+            ImageFileDialogButton.Image = SvgManager.LoadBitmap("solid/folder");
+
+            ImageFileDialogButton.Image = SvgManager.Solid.Folder;
+            BackwardSelectedImageButton.Image = SvgManager.Solid.ArrowLeft;
+            ReplaceSelectedImageButton.Image = SvgManager.Solid.ArrowDown;
+            ForwardSelectedImageButton.Image = SvgManager.Solid.ArrowRight;
+
+            ImageFileDialogButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            BackwardSelectedImageButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            ReplaceSelectedImageButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            ForwardSelectedImageButton.DisplayStyle = ToolStripItemDisplayStyle.Image;            
         }
 
         private void ImageFileDialogButton_Click(object sender, EventArgs e)

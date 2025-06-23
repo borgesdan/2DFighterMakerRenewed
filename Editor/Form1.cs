@@ -83,7 +83,8 @@ namespace Editor
 
         private void AddCharacterButton_Click(object sender, EventArgs e)
         {
-
+            var form = new AddNewItemForm();
+            form.ShowDialog();
         }
 
         private void OpenProjectMenuItem_Click(object sender, EventArgs e)
@@ -91,10 +92,16 @@ namespace Editor
             var fileManager = new OpenFileManager();
             var file = fileManager.OpenProject();
 
-            if (file != null) 
-            {                
+            if (file != null)
+            {
                 this.Project = Pipeline.Read<ProjectModel>(file);
             }
+        }
+
+        private void OpenImageWindowButton_Click_1(object sender, EventArgs e)
+        {
+            var form = new ImageFileManagerForm();
+            form.Show();
         }
     }
 }

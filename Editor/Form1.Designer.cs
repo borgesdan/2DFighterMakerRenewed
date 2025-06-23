@@ -94,13 +94,13 @@
             // 
             novoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { NewProjectMenuItem });
             novoToolStripMenuItem.Name = "novoToolStripMenuItem";
-            novoToolStripMenuItem.Size = new Size(180, 22);
+            novoToolStripMenuItem.Size = new Size(103, 22);
             novoToolStripMenuItem.Text = "Novo";
             // 
             // NewProjectMenuItem
             // 
             NewProjectMenuItem.Name = "NewProjectMenuItem";
-            NewProjectMenuItem.Size = new Size(180, 22);
+            NewProjectMenuItem.Size = new Size(112, 22);
             NewProjectMenuItem.Text = "Projeto";
             NewProjectMenuItem.Click += NewProjectMenuItem_Click;
             // 
@@ -108,13 +108,13 @@
             // 
             abrirToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { OpenProjectMenuItem });
             abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            abrirToolStripMenuItem.Size = new Size(180, 22);
+            abrirToolStripMenuItem.Size = new Size(103, 22);
             abrirToolStripMenuItem.Text = "Abrir";
             // 
             // OpenProjectMenuItem
             // 
             OpenProjectMenuItem.Name = "OpenProjectMenuItem";
-            OpenProjectMenuItem.Size = new Size(180, 22);
+            OpenProjectMenuItem.Size = new Size(112, 22);
             OpenProjectMenuItem.Text = "Projeto";
             OpenProjectMenuItem.Click += OpenProjectMenuItem_Click;
             // 
@@ -250,6 +250,7 @@
             OpenImageWindowButton.Name = "OpenImageWindowButton";
             OpenImageWindowButton.Size = new Size(37, 22);
             OpenImageWindowButton.Text = "Abrir";
+            OpenImageWindowButton.Click += OpenImageWindowButton_Click_1;
             // 
             // toolStripButton2
             // 
