@@ -7,13 +7,20 @@ namespace Editor
 {
     public partial class Form1 : Form
     {
-        ProjectModel? projectModel;
+        public Form1 Instance { get; private set; } = null!;
 
+        ProjectModel? projectModel;
         ImageFileManagerForm? imageFileManagerForm;
         bool imageFileManagerFormIsVisible;
 
+        /// <summary>
+        /// Responsável por gerenciar as ações gerais da janela principal.
+        /// </summary>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public ProjectModel? Project
+        public MainFormActionManager FormActionManager { get; private set; }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public ProjectModel? CurrentProject
         {
             get => projectModel;
             set
@@ -33,9 +40,16 @@ namespace Editor
 
         public Form1()
         {
+            if (Instance != null)
+                throw new InvalidOperationException($"Já existe uma instância de {nameof(Form1)} em execução.");
+
+            Instance = this;
+            FormActionManager = new MainFormActionManager();
+
+
             InitializeComponent();
             ResetFormContent();
-        }
+        }        
 
         private void ResetFormContent()
         {
@@ -47,7 +61,7 @@ namespace Editor
         {
             MainTabPanel.Enabled = true;
             MainTabPanel.Visible = true;
-        }
+        }        
 
         private void OpenImageWindowButton_Click(object sender, EventArgs e)
         {
@@ -94,7 +108,7 @@ namespace Editor
 
             if (file != null)
             {
-                this.Project = Pipeline.Read<ProjectModel>(file);
+                this.CurrentProject = Pipeline.Read<ProjectModel>(file);
             }
         }
 
@@ -102,6 +116,28 @@ namespace Editor
         {
             var form = new ImageFileManagerForm();
             form.Show();
+        }
+    }
+
+    /// <summary>
+    /// Classe responsável por gerenciar as ações gerais da janela principal.
+    /// </summary>
+    public class MainFormActionManager
+    {
+        private ImageFileManagerForm? imageFileManagerForm;
+        private bool imageFileManagerIsOpen = false;        
+
+        public ImageFileManagerForm ShowImageFileManagerForm()
+        {
+            if (imageFileManagerForm == null || imageFileManagerForm.IsDisposed)
+                imageFileManagerForm = new ImageFileManagerForm();
+
+            if (imageFileManagerIsOpen)
+                imageFileManagerForm.Focus();
+            else
+                imageFileManagerForm.Show();
+
+            return imageFileManagerForm;
         }
     }
 }

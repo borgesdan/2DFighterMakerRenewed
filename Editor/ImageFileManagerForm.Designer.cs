@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImageFileManagerForm));
             toolMenu = new ToolStrip();
-            ImageFileDialogButton = new ToolStripButton();
+            OpenImageButton = new ToolStripButton();
             BackwardSelectedImageButton = new ToolStripButton();
             ReplaceSelectedImageButton = new ToolStripButton();
             ForwardSelectedImageButton = new ToolStripButton();
@@ -43,22 +43,22 @@
             // 
             // toolMenu
             // 
-            toolMenu.Items.AddRange(new ToolStripItem[] { ImageFileDialogButton, BackwardSelectedImageButton, ReplaceSelectedImageButton, ForwardSelectedImageButton });
+            toolMenu.Items.AddRange(new ToolStripItem[] { OpenImageButton, BackwardSelectedImageButton, ReplaceSelectedImageButton, ForwardSelectedImageButton });
             toolMenu.Location = new Point(0, 0);
             toolMenu.Name = "toolMenu";
             toolMenu.Size = new Size(800, 25);
             toolMenu.TabIndex = 0;
             toolMenu.Text = "toolStrip1";
             // 
-            // ImageFileDialogButton
+            // OpenImageButton
             // 
-            ImageFileDialogButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            ImageFileDialogButton.Image = (Image)resources.GetObject("ImageFileDialogButton.Image");
-            ImageFileDialogButton.ImageTransparentColor = Color.Magenta;
-            ImageFileDialogButton.Name = "ImageFileDialogButton";
-            ImageFileDialogButton.Size = new Size(37, 22);
-            ImageFileDialogButton.Text = "Abrir";
-            ImageFileDialogButton.Click += ImageFileDialogButton_Click;
+            OpenImageButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            OpenImageButton.Image = (Image)resources.GetObject("OpenImageButton.Image");
+            OpenImageButton.ImageTransparentColor = Color.Magenta;
+            OpenImageButton.Name = "OpenImageButton";
+            OpenImageButton.Size = new Size(37, 22);
+            OpenImageButton.Text = "Abrir";
+            OpenImageButton.Click += OpenImageButton_Click;
             // 
             // BackwardSelectedImageButton
             // 
@@ -131,7 +131,7 @@
         #endregion
 
         private ToolStrip toolMenu;
-        private ToolStripButton ImageFileDialogButton;
+        private ToolStripButton OpenImageButton;
         private Panel panel1;
         private PictureBox pictureBox1;
         private ToolStripButton ForwardSelectedImageButton;

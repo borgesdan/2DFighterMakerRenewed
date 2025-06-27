@@ -42,7 +42,7 @@ namespace Editor.Core
             return docBmp;
         }
 
-        public static class Solid
+        public static class SolidIcon
         {
             public static Bitmap ArrowDown => SvgManager.LoadSolidBitmap("arrow-down");
             public static Bitmap ArrowLeft => SvgManager.LoadSolidBitmap("arrow-left");

@@ -13,44 +13,45 @@ namespace Editor
         /// Evento quando o usuário clica no botão de aceitar o recorte da imagem.
         /// A seleção deve ser processada como uma imagem a ser adicionada posterior a outra em uma animação.
         /// </summary>
-        public event EventHandler<Bitmap>? ForwardSelectedImageButtonClick;
+        public event EventHandler<ImageFileManagerEventArgs>? ForwardButtonClick;
         /// <summary>
         /// Evento quando o usuário clica no botão de aceitar o recorte da imagem.
         /// A seleção deve ser processada como uma imagem a ser adicionada anterior a outra em uma animação.
         /// </summary>
-        public event EventHandler<Bitmap>? BackwardSelectedImageButtonClick;
+        public event EventHandler<ImageFileManagerEventArgs>? BackwardButtonClick;
         /// <summary>
         /// Evento quando o usuário clica no botão de aceitar o recorte da imagem.
         /// A seleção deve ser processada como uma imagem que substituirá outra em uma animação.
         /// </summary>
-        public event EventHandler<Bitmap>? ReplaceSelectedImageButtonClick;
+        public event EventHandler<ImageFileManagerEventArgs>? ReplaceButtonClick;
 
         public ImageFileManagerForm()
         {
             InitializeComponent();
 
             SelectionRectangle = new PictureBoxSelectionRectangleHandler(pictureBox1);
-            ImageFileDialogButton.Image = SvgManager.LoadBitmap("solid/folder");
+            OpenImageButton.Image = SvgManager.LoadBitmap("solid/folder");
 
-            ImageFileDialogButton.Image = SvgManager.Solid.Folder;
-            BackwardSelectedImageButton.Image = SvgManager.Solid.ArrowLeft;
-            ReplaceSelectedImageButton.Image = SvgManager.Solid.ArrowDown;
-            ForwardSelectedImageButton.Image = SvgManager.Solid.ArrowRight;
+            OpenImageButton.Image = SvgManager.SolidIcon.Folder;
+            BackwardSelectedImageButton.Image = SvgManager.SolidIcon.ArrowLeft;
+            ReplaceSelectedImageButton.Image = SvgManager.SolidIcon.ArrowDown;
+            ForwardSelectedImageButton.Image = SvgManager.SolidIcon.ArrowRight;
 
-            ImageFileDialogButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            OpenImageButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
             BackwardSelectedImageButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
             ReplaceSelectedImageButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
             ForwardSelectedImageButton.DisplayStyle = ToolStripItemDisplayStyle.Image;            
         }
 
-        private void ImageFileDialogButton_Click(object sender, EventArgs e)
+        private void OpenImageButton_Click(object sender, EventArgs e)
         {
-            using OpenFileManager fileManager = new OpenFileManager();
+            using var fileManager = new OpenFileManager();
             var image = fileManager.OpenImage();
 
             if (image != null)
             {
                 SelectionRectangle.Reset();
+                pictureBox1.Tag = image;
                 pictureBox1.Load(image!);
             }                
         }
@@ -61,7 +62,12 @@ namespace Editor
 
             if (bmp != null)
             {
-                ForwardSelectedImageButtonClick?.Invoke(sender, bmp);
+                var args = new ImageFileManagerEventArgs
+                {
+                    SelectedFrame = bmp,
+                    ImagePath = pictureBox1.Tag as string ?? throw new NullReferenceException(),
+                };
+                ForwardButtonClick?.Invoke(sender, args);
             }
         }
 
@@ -71,7 +77,12 @@ namespace Editor
 
             if (bmp != null)
             {
-                BackwardSelectedImageButtonClick?.Invoke(sender, bmp);
+                var args = new ImageFileManagerEventArgs
+                {
+                    SelectedFrame = bmp,
+                    ImagePath = pictureBox1.Tag as string ?? throw new NullReferenceException()
+                };
+                BackwardButtonClick?.Invoke(sender, args);
             }
         }
 
@@ -81,8 +92,19 @@ namespace Editor
 
             if (bmp != null)
             {
-                ReplaceSelectedImageButtonClick?.Invoke(sender, bmp);
+                var args = new ImageFileManagerEventArgs
+                {
+                    SelectedFrame = bmp,
+                    ImagePath = pictureBox1.Tag as string ?? throw new NullReferenceException()
+                };
+                ReplaceButtonClick?.Invoke(sender, args);
             }
         }
+    }
+
+    public class ImageFileManagerEventArgs : EventArgs
+    {
+        public Bitmap SelectedFrame { get; set; } = null!;
+        public string ImagePath { get; set; } = null!;
     }
 }
