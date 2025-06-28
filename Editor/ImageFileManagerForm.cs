@@ -1,5 +1,6 @@
 ﻿using Editor.Core;
 using System.ComponentModel;
+using System.Security.AccessControl;
 
 namespace Editor
 {
@@ -11,19 +12,8 @@ namespace Editor
 
         /// <summary>
         /// Evento quando o usuário clica no botão de aceitar o recorte da imagem.
-        /// A seleção deve ser processada como uma imagem a ser adicionada posterior a outra em uma animação.
         /// </summary>
-        public event EventHandler<ImageFileManagerEventArgs>? ForwardButtonClick;
-        /// <summary>
-        /// Evento quando o usuário clica no botão de aceitar o recorte da imagem.
-        /// A seleção deve ser processada como uma imagem a ser adicionada anterior a outra em uma animação.
-        /// </summary>
-        public event EventHandler<ImageFileManagerEventArgs>? BackwardButtonClick;
-        /// <summary>
-        /// Evento quando o usuário clica no botão de aceitar o recorte da imagem.
-        /// A seleção deve ser processada como uma imagem que substituirá outra em uma animação.
-        /// </summary>
-        public event EventHandler<ImageFileManagerEventArgs>? ReplaceButtonClick;
+        public event EventHandler<AddFrameEventArgs>? SelectFrameEvent;
 
         public ImageFileManagerForm()
         {
@@ -41,6 +31,22 @@ namespace Editor
             BackwardSelectedImageButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
             ReplaceSelectedImageButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
             ForwardSelectedImageButton.DisplayStyle = ToolStripItemDisplayStyle.Image;            
+        } 
+        
+        private void InvokeFrameEventArgs(object sender, AddFramePositionType position)
+        {
+            var bmp = SelectionRectangle.GetSelectedBitmap();
+
+            if (bmp != null)
+            {
+                var args = new AddFrameEventArgs
+                {
+                    SelectedFrame = bmp,
+                    ImagePath = pictureBox1.Tag as string ?? throw new NullReferenceException(),
+                    Position = AddFramePositionType.End,
+                };
+                SelectFrameEvent?.Invoke(sender, args);
+            }
         }
 
         private void OpenImageButton_Click(object sender, EventArgs e)
@@ -54,57 +60,15 @@ namespace Editor
                 pictureBox1.Tag = image;
                 pictureBox1.Load(image!);
             }                
-        }
+        }        
 
         private void ForwardSelectedImageButton_Click(object sender, EventArgs e)
-        {
-            var bmp = SelectionRectangle.GetSelectedBitmap();
+            => InvokeFrameEventArgs(sender, AddFramePositionType.End);
 
-            if (bmp != null)
-            {
-                var args = new ImageFileManagerEventArgs
-                {
-                    SelectedFrame = bmp,
-                    ImagePath = pictureBox1.Tag as string ?? throw new NullReferenceException(),
-                };
-                ForwardButtonClick?.Invoke(sender, args);
-            }
-        }
+        private void BackwardSelectedImageButton_Click(object sender, EventArgs e) 
+            => InvokeFrameEventArgs(sender, AddFramePositionType.Begin);
 
-        private void BackwardSelectedImageButton_Click(object sender, EventArgs e)
-        {
-            var bmp = SelectionRectangle.GetSelectedBitmap();
-
-            if (bmp != null)
-            {
-                var args = new ImageFileManagerEventArgs
-                {
-                    SelectedFrame = bmp,
-                    ImagePath = pictureBox1.Tag as string ?? throw new NullReferenceException()
-                };
-                BackwardButtonClick?.Invoke(sender, args);
-            }
-        }
-
-        private void ReplaceSelectedImageButton_Click(object sender, EventArgs e)
-        {
-            var bmp = SelectionRectangle.GetSelectedBitmap();
-
-            if (bmp != null)
-            {
-                var args = new ImageFileManagerEventArgs
-                {
-                    SelectedFrame = bmp,
-                    ImagePath = pictureBox1.Tag as string ?? throw new NullReferenceException()
-                };
-                ReplaceButtonClick?.Invoke(sender, args);
-            }
-        }
-    }
-
-    public class ImageFileManagerEventArgs : EventArgs
-    {
-        public Bitmap SelectedFrame { get; set; } = null!;
-        public string ImagePath { get; set; } = null!;
-    }
+        private void ReplaceSelectedImageButton_Click(object sender, EventArgs e) 
+            => InvokeFrameEventArgs(sender, AddFramePositionType.Replace);
+    }    
 }

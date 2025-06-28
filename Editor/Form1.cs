@@ -7,7 +7,7 @@ namespace Editor
 {
     public partial class Form1 : Form
     {
-        public Form1 Instance { get; private set; } = null!;
+        public static Form1 Instance { get; private set; } = null!;
 
         ProjectModel? projectModel;
         ImageFileManagerForm? imageFileManagerForm;
@@ -114,8 +114,7 @@ namespace Editor
 
         private void OpenImageWindowButton_Click_1(object sender, EventArgs e)
         {
-            var form = new ImageFileManagerForm();
-            form.Show();
+            var form = this.FormActionManager.ShowImageFileManagerForm();
         }
     }
 
@@ -130,13 +129,17 @@ namespace Editor
         public ImageFileManagerForm ShowImageFileManagerForm()
         {
             if (imageFileManagerForm == null || imageFileManagerForm.IsDisposed)
+            {
                 imageFileManagerForm = new ImageFileManagerForm();
+                imageFileManagerForm.Shown += (object? sender, EventArgs e) => imageFileManagerIsOpen = true;
+                imageFileManagerForm.FormClosed += (object? sender, FormClosedEventArgs e) => imageFileManagerIsOpen = false;
+            }                
 
             if (imageFileManagerIsOpen)
                 imageFileManagerForm.Focus();
             else
-                imageFileManagerForm.Show();
-
+                imageFileManagerForm.Show(Form1.Instance);
+            
             return imageFileManagerForm;
         }
     }

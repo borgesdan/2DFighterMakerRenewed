@@ -93,7 +93,7 @@
             // panel1
             // 
             panel1.AutoScroll = true;
-            panel1.BackColor = SystemColors.ControlLight;
+            panel1.BackColor = SystemColors.AppWorkspace;
             panel1.Controls.Add(pictureBox1);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 25);
