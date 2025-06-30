@@ -26,15 +26,6 @@ namespace Editor
             set
             {
                 projectModel = value;
-
-                if (projectModel == null)
-                {
-                    ResetFormContent();
-                }
-                else
-                {
-                    EnableFormContent();
-                }
             }
         }
 
@@ -48,20 +39,7 @@ namespace Editor
 
 
             InitializeComponent();
-            ResetFormContent();
-        }        
-
-        private void ResetFormContent()
-        {
-            MainTabPanel.Enabled = false;
-            MainTabPanel.Visible = false;
         }
-
-        private void EnableFormContent()
-        {
-            MainTabPanel.Enabled = true;
-            MainTabPanel.Visible = true;
-        }        
 
         private void OpenImageWindowButton_Click(object sender, EventArgs e)
         {
@@ -95,12 +73,6 @@ namespace Editor
             var dialog = form.ShowDialog(this);
         }
 
-        private void AddCharacterButton_Click(object sender, EventArgs e)
-        {
-            var form = new AddNewItemForm();
-            form.ShowDialog();
-        }
-
         private void OpenProjectMenuItem_Click(object sender, EventArgs e)
         {
             var fileManager = new OpenFileManager();
@@ -112,35 +84,10 @@ namespace Editor
             }
         }
 
-        private void OpenImageWindowButton_Click_1(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            var form = this.FormActionManager.ShowImageFileManagerForm();
+            var form = FormActionManager.ShowImageFileManagerForm();
+            fighterAnimationEditor1.AttachEvents(form);
         }
-    }
-
-    /// <summary>
-    /// Classe responsável por gerenciar as ações gerais da janela principal.
-    /// </summary>
-    public class MainFormActionManager
-    {
-        private ImageFileManagerForm? imageFileManagerForm;
-        private bool imageFileManagerIsOpen = false;        
-
-        public ImageFileManagerForm ShowImageFileManagerForm()
-        {
-            if (imageFileManagerForm == null || imageFileManagerForm.IsDisposed)
-            {
-                imageFileManagerForm = new ImageFileManagerForm();
-                imageFileManagerForm.Shown += (object? sender, EventArgs e) => imageFileManagerIsOpen = true;
-                imageFileManagerForm.FormClosed += (object? sender, FormClosedEventArgs e) => imageFileManagerIsOpen = false;
-            }                
-
-            if (imageFileManagerIsOpen)
-                imageFileManagerForm.Focus();
-            else
-                imageFileManagerForm.Show(Form1.Instance);
-            
-            return imageFileManagerForm;
-        }
-    }
+    }    
 }
