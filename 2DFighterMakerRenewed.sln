@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine.WindowsDX", "Engine\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Editor", "Editor\Editor.csproj", "{8266CB47-DFF4-4B8E-AD34-A827306EE861}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Editor.Core", "Editor.Core\Editor.Core.csproj", "{0361B89E-A74E-41DB-8316-9C26C9E51606}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Editor.Models", "Editor.Core\Editor.Models.csproj", "{0361B89E-A74E-41DB-8316-9C26C9E51606}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox", "Sandbox\Sandbox.csproj", "{7BA2974A-CCEB-4E83-91B6-D9A1E4F7B2F8}"
 EndProject

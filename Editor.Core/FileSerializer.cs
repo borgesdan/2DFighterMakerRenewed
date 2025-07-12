@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace Editor.Core
+namespace Editor.Models
 {
     public static class FileSerializer
     {

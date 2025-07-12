@@ -1,4 +1,4 @@
-﻿namespace Editor.Core
+﻿namespace Editor.Models
 {
     public enum AddFramePositionType
     {

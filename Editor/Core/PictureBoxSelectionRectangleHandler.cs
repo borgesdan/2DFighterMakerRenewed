@@ -1,4 +1,4 @@
-﻿namespace Editor.Core
+﻿namespace Editor.Models
 {
     /// <summary>Classe responsável por gerenciar a seleção de retângulos para um PictureBox por meio de eventos.</summary>
     public class PictureBoxSelectionRectangleHandler

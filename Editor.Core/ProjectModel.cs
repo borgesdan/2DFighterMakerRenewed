@@ -1,4 +1,4 @@
-﻿namespace Editor.Core
+﻿namespace Editor.Models
 {
     /// <summary>
     /// Representa um modelo de projeto.

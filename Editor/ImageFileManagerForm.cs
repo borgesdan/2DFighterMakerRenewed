@@ -1,4 +1,4 @@
-﻿using Editor.Core;
+﻿using Editor.Models;
 using System.ComponentModel;
 
 namespace Editor

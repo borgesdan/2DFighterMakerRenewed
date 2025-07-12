@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Editor.Core\Editor.Core.csproj" />
+    <ProjectReference Include="..\Editor.Core\Editor.Models.csproj" />
     <ProjectReference Include="..\Sandbox\Sandbox.csproj" />
   </ItemGroup>
 

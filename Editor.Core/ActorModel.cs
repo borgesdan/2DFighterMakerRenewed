@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Editor.Core
+namespace Editor.Models
 {
     public class ActorModel
     {

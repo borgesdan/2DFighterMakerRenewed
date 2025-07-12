@@ -1,4 +1,4 @@
-﻿namespace Editor.Core
+﻿namespace Editor.Models
 {
     /// <summary>
     /// Classe para gerenciamento de abertura arquivos.

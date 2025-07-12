@@ -1,6 +1,6 @@
 ﻿using Svg;
 
-namespace Editor.Core
+namespace Editor.Models
 {
     public class SvgManager
     {

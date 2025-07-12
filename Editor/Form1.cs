@@ -1,4 +1,4 @@
-using Editor.Core;
+using Editor.Models;
 using System.ComponentModel;
 using System.Drawing.Text;
 using System.Reflection;

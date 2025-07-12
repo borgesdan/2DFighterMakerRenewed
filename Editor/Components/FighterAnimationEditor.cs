@@ -1,4 +1,4 @@
-﻿using Editor.Core;
+﻿using Editor.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,17 +21,12 @@ namespace Editor.Components
 
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.VerticalScroll.Enabled = false;
-
-            iconListView.Scrollable = false;
-            iconListView.GridLines = true;
+            
             iconListView.BackColor = panel1.BackColor;
-            iconListView.BorderStyle = BorderStyle.None;
         }
 
         public void AttachEvents(ImageFileManagerForm form)
-        {
-            form.SelectFrameEvent += (object? sender, AddFrameEventArgs e) => AddFrame(e.SelectedFrame, e.Position);
-        }
+            => form.SelectFrameEvent += (object? sender, AddFrameEventArgs e) => AddFrame(e.SelectedFrame, e.Position);
 
         public void AddFrame(Bitmap frame, AddFramePositionType position)
         {
@@ -50,6 +45,8 @@ namespace Editor.Components
 
             if (iconListView.TileSize.Width * iconListView.Items.Count > iconListView.Width)
                 iconListView.Width += iconListView.Width / 3;
+
+            animationFramesContainer1.AddFrame(frame);
         }        
     }
 }
